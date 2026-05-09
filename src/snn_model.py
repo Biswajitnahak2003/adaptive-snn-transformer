@@ -553,7 +553,7 @@ class TransformerBlock(nn.Module):
 
     def __init__(self, dim, num_heads, mlp_ratio=4, beta=0.5):
         super().__init__()
-        self.attn = SpikingMultiHeadAttention(dim, num_heads, beta)
+        self.attn = BipolarLinearAttention(dim, num_heads, beta)
         self.mlp = SpikingMLP(dim, dim * mlp_ratio, beta)
         self.norm1 = nn.LayerNorm(dim)
         self.norm2 = nn.LayerNorm(dim)
@@ -719,7 +719,7 @@ class TransformerBlock(nn.Module):
 
     def __init__(self, dim, num_heads, mlp_ratio=4, beta=0.5):
         super().__init__()
-        self.attn = SpikingMultiHeadAttention(dim, num_heads, beta)
+        self.attn = BipolarLinearAttention(dim, num_heads, beta)
         self.mlp = SpikingMLP(dim, dim * mlp_ratio, beta)
         self.norm1 = nn.LayerNorm(dim)
         self.norm2 = nn.LayerNorm(dim)
